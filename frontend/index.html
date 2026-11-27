@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ScamShield — Stay Ahead of Scams</title>
+  <meta name="description" content="ScamShield uses GenLayer AI consensus to assess suspicious links and messages.">
+  <style>
+    *{box-sizing:border-box}
+    body{margin:0;background:#080d18;color:#edf2ff;font-family:Inter,Arial,sans-serif}
+    header{height:76px;border-bottom:1px solid #202a3b;display:flex;align-items:center;justify-content:space-between;padding:0 7%;background:#0b1220}
+    .brand{font-size:22px;font-weight:800;letter-spacing:-1px}
+    .brand span{color:#40e0b2}
+    .mark{color:#40e0b2;margin-right:8px}
+    .network{font-size:12px;color:#9eabc1;border:1px solid #29364a;padding:9px 13px;border-radius:20px}
+    main{max-width:1050px;margin:0 auto;padding:75px 24px}
+    .hero{text-align:center;margin-bottom:42px}
+    .eyebrow{color:#40e0b2;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
+    h1{font-size:clamp(36px,6vw,58px);letter-spacing:-2px;margin:18px 0 14px}
+    h1 span{color:#40e0b2}
+    .subtitle{color:#9eabc1;font-size:16px;line-height:1.7;max-width:620px;margin:auto}
+    .panel{background:#101a2a;border:1px solid #26364b;border-radius:18px;padding:28px;max-width:760px;margin:0 auto;box-shadow:0 20px 70px #0005}
+    .panel-title{font-size:17px;font-weight:700;margin-bottom:8px}
+    .hint{font-size:13px;color:#91a0b8;margin-bottom:20px}
+    textarea{width:100%;min-height:145px;resize:vertical;background:#091321;border:1px solid #304158;border-radius:12px;padding:16px;color:#edf2ff;font:14px/1.6 inherit;outline:none}
+    textarea:focus{border-color:#40e0b2}
+    textarea::placeholder{color:#64748b}
+    .actions{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:17px;flex-wrap:wrap}
+    .limit{font-size:12px;color:#7889a3}
+    button{background:#40e0b2;color:#07140f;border:0;border-radius:10px;padding:13px 22px;font-weight:800;font-size:14px;cursor:pointer}
+    button:hover{background:#6bf0ca}
+    button:disabled{opacity:.5;cursor:not-allowed}
+    .notice{display:none;margin-top:18px;padding:13px 15px;border-radius:10px;background:#17283a;color:#b8c9df;font-size:13px;line-height:1.5}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:38px auto 0;max-width:900px}
+    .feature{background:#0e1726;border:1px solid #202e42;border-radius:14px;padding:20px}
+    .feature .icon{font-size:23px}
+    .feature h3{font-size:14px;margin:13px 0 7px}
+    .feature p{font-size:12px;line-height:1.6;color:#91a0b8;margin:0}
+    .disclaimer{text-align:center;color:#71819a;font-size:11px;line-height:1.6;margin:32px auto 0;max-width:650px}
+    footer{border-top:1px solid #202a3b;padding:24px;text-align:center;color:#71819a;font-size:12px}
+    @media(max-width:650px){header{padding:0 5%}.features{grid-template-columns:1fr}main{padding-top:48px}.panel{padding:20px}.network{font-size:10px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><span class="mark">⬡</span>Scam<span>Shield</span></div>
+    <div class="network">● GenLayer Intelligent Contract</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow">AI-powered protection</div>
+      <h1>Don't trust. <span>Verify.</span></h1>
+      <p class="subtitle">Check suspicious links, crypto offers and giveaway messages with AI-powered risk assessment secured by GenLayer consensus.</p>
+    </section>
+
+    <section class="panel">
+      <div class="panel-title">Check a suspicious message or URL</div>
+      <div class="hint">Paste the link, message, investment offer or giveaway you want to investigate.</div>
+      <textarea id="subject" maxlength="1200" placeholder="Example: Congratulations! You won $5,000. Send your wallet seed phrase to claim your prize..."></textarea>
+      <div class="actions">
+        <span class="limit" id="counter">0 / 1200 characters</span>
+        <button id="analyze">Analyze with ScamShield →</button>
+      </div>
+      <div class="notice" id="notice" role="status"></div>
+    </section>
+
+    <section class="features">
+      <article class="feature">
+        <div class="icon">🧠</div>
+        <h3>AI risk assessment</h3>
+        <p>Evaluate suspicious content for common scam warning signs.</p>
+      </article>
+      <article class="feature">
+        <div class="icon">⛓️</div>
+        <h3>GenLayer consensus</h3>
+        <p>Use an Intelligent Contract to process and record assessments.</p>
+      </article>
+      <article class="feature">
+        <div class="icon">🛡️</div>
+        <h3>Practical safety advice</h3>
+        <p>Understand potential risks and the steps you can take to stay safe.</p>
+      </article>
+    </section>
+
+    <p class="disclaimer">ScamShield provides risk indicators, not guarantees. A LOW risk result does not prove that a link, message or offer is safe. Always verify through official channels.</p>
+  </main>
+
+  <footer>ScamShield · Built on GenLayer · Protect your digital assets</footer>
+
+  <script>
+    const subject = document.getElementById('subject');
+    const counter = document.getElementById('counter');
+    const button = document.getElementById('analyze');
+    const notice = document.getElementById('notice');
+
+    subject.addEventListener('input', () => {
+      counter.textContent = `${subject.value.length} / 1200 characters`;
+    });
+
+    button.addEventListener('click', () => {
+      if (subject.value.trim().length < 4) {
+        notice.textContent = 'Please enter a URL or suspicious message first.';
+      } else {
+        notice.textContent = 'The interface is ready. GenLayer contract connection is the next setup step.';
+      }
+      notice.style.display = 'block';
+    });
+  </script>
+</body>
+</html>
